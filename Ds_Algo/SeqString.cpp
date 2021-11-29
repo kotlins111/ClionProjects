@@ -11,7 +11,7 @@ typedef struct {
     int length;
 }SString;
 
-
+void prefixFunc(SString pattern,int prefix[]);
 //字符串模式匹配 BF算法 主串text  子串pattern
 //i 遍历text j 遍历pattern  主串回退位置 i-j+2 匹配成功返回子串位置 i-pattern.length
 //匹配失败返回-1
@@ -44,7 +44,7 @@ int Index_KMP(SString text,SString pattern,int pos){
         if(j==0||text.ch[i]==pattern.ch[j]){
             i++;j++;
         }else{
-            prefix(pattern,next);
+            prefixFunc(pattern,next);
             j=next[j];
         }
     }
